@@ -1,18 +1,27 @@
 #NavigationBar {
-    background-color: #CD0232;
+    background-color: #011246;
+    padding: 2em;
+
+    @media (max-width:900px) {
+        padding: 0;
+        padding-top: 1em;
+        padding-bottom: 1em;
+    }
 
     a {
         color: white;
+        font-weight: bold;
         border-radius: 5px;
-
+        padding-left: 0.3em;
         &:hover {
-            background-color: #920022;
+            background-color: #FC691A;
         }
 
         &.active {
-            background-color: #920022;
+            background-color: #FC691A;
         }
     }
+
 
     .input-group {
         width: 40em;
@@ -30,11 +39,11 @@
         }
 
         .BtnSearch {
-            background-color: #011246;
+            background-color: #FC691A;
             box-shadow: none;
 
             &:hover {
-                background-color: #021f77;
+                background-color: #c24400;
             }
         }
     }

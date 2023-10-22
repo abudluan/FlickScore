@@ -1,0 +1,36 @@
+#home {
+    margin-top: 8em;
+
+    @media (max-width: 900px) {
+        margin-top: 5em;
+    }
+
+    .TextIntro {
+        color: #011246;
+        text-align: center;
+        margin-bottom: 1em;
+
+        h1,
+        h2 {
+            font-weight: bold;
+        }
+    }
+
+    .destaques {
+
+        h4{
+            background-color: #011246;
+            color: white;
+            padding: 0.5em;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+        .filmDestaque {
+            height: 15em;
+            width: 10em;
+        }
+    }
+
+
+
+}
