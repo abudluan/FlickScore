@@ -39,22 +39,6 @@
 
         }
 
-        .infoFilm {
-            margin-top: 1.3em;
-            border-radius: 5px;
-
-            .titleLink {
-
-                font-weight: bold;
-                color: black;
-
-                &:hover {
-                    color: #FC691A;
-                }
-            }
-
-        }
-
         .ratingFilm {
             position: absolute;
             margin-top: -2.6em;
@@ -66,14 +50,8 @@
             border-top-left-radius: 0;
             border-bottom-right-radius: 0;
 
-
-            .TextNota {
-                display: none;
-
-                @media (max-width:1400px) {
-                    display: inline;
-
-                }
+            &:hover {
+                background-color: #FC691A;
             }
 
             @media (max-width:1400px) {
@@ -87,7 +65,37 @@
                 border-bottom-right-radius: 5px;
 
             }
+
+            .TextNota {
+                display: none;
+
+                @media (max-width:1400px) {
+                    display: inline;
+
+                }
+            }
         }
+
+        .infoFilm {
+            margin-top: 0.5em;
+
+            .titleLink {
+                font-weight: bold;
+                color: black;
+                text-align: left;
+                
+                &:hover {
+                    color: #FC691A;
+                }
+            }
+
+        }
+
+        .dateFilme {
+            text-align: left;
+            margin-top: -1.2em;
+        }
+
     }
 
 

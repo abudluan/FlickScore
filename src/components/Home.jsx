@@ -56,24 +56,24 @@ const Home = () => {
 
             <div className='destaquesFilmes'>
                 <MDBContainer>
-                    <h4>Tendências - Filme</h4>
+                    <h4>Novidades - Filme</h4>
                     <MDBRow className='flex-nowrap overflow-auto'>
                         {latestReleases.map(release => (
                             <MDBCol key={release.id}>
                                 <Link>
                                     <img src={`https://image.tmdb.org/t/p/w500${release.poster_path}`} position='top' alt={release.title} />
                                 </Link>
+
                                 <p className='ratingFilm'>
                                     <span className='TextNota'>Nota : </span>{formatRating(release.vote_average)}
                                 </p>
+
                                 <div className='infoFilm'>
                                     <Link>
                                         <p className='titleLink'>{release.title}</p>
                                     </Link>
 
-
-
-                                    <p>{new Date(release.release_date).toLocaleDateString('pt-BR', {
+                                    <p className='dateFilme'>{new Date(release.release_date).toLocaleDateString('pt-BR', {
                                         day: 'numeric',
                                         month: 'short',
                                         year: 'numeric',
