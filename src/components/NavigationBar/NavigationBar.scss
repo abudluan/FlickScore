@@ -1,0 +1,41 @@
+#NavigationBar {
+    background-color: #CD0232;
+
+    a {
+        color: white;
+        border-radius: 5px;
+
+        &:hover {
+            background-color: #920022;
+        }
+
+        &.active {
+            background-color: #920022;
+        }
+    }
+
+    .input-group {
+        width: 40em;
+
+        @media (max-width:900px) {
+            width: auto;
+        }
+
+        ::placeholder {
+            font-style: italic;
+        }
+
+        .form-control {
+            border-color: transparent;
+        }
+
+        .BtnSearch {
+            background-color: #011246;
+            box-shadow: none;
+
+            &:hover {
+                background-color: #021f77;
+            }
+        }
+    }
+}
