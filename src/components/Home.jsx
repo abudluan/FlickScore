@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 import {
     MDBContainer,
     MDBRow,
@@ -23,7 +24,7 @@ const Home = () => {
         axios.get(`https://api.themoviedb.org/3/movie/now_playing`, {
             params: {
                 api_key: apiKey,
-                language: 'en-US', // Idioma dos resultados (ajuste conforme necessário)
+                language: 'pt-br', // Idioma dos resultados (ajuste conforme necessário)
                 page: 1, // Página de resultados
             }
         })
@@ -37,6 +38,13 @@ const Home = () => {
             });
     }, []);
 
+    function formatRating(rating) {
+        if (rating === Math.floor(rating)) {
+            return rating.toFixed(1); // Adiciona ".0" às notas inteiras
+        }
+        return rating.toString(); // Mantém as notas com dígitos decimais
+    }
+
     return (
         <section id='home'>
             <div className='TextIntro'>
@@ -46,15 +54,32 @@ const Home = () => {
                 </MDBContainer>
             </div>
 
-            <div className='destaques'>
+            <div className='destaquesFilmes'>
                 <MDBContainer>
-                    <h4>Novidades - Filme</h4>
-                    <MDBRow className='flex-nowrap overflow-auto pb-5'>
+                    <h4>Tendências - Filme</h4>
+                    <MDBRow className='flex-nowrap overflow-auto'>
                         {latestReleases.map(release => (
                             <MDBCol key={release.id}>
-                                
-                                    <img className='filmDestaque' src={`https://image.tmdb.org/t/p/w500${release.poster_path}`} position='top' alt={release.title} />
-                                
+                                <Link>
+                                    <img src={`https://image.tmdb.org/t/p/w500${release.poster_path}`} position='top' alt={release.title} />
+                                </Link>
+                                <p className='ratingFilm'>
+                                    <span className='TextNota'>Nota : </span>{formatRating(release.vote_average)}
+                                </p>
+                                <div className='infoFilm'>
+                                    <Link>
+                                        <p className='titleLink'>{release.title}</p>
+                                    </Link>
+
+
+
+                                    <p>{new Date(release.release_date).toLocaleDateString('pt-BR', {
+                                        day: 'numeric',
+                                        month: 'short',
+                                        year: 'numeric',
+                                    })}</p>
+
+                                </div>
                             </MDBCol>
                         ))}
                     </MDBRow>

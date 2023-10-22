@@ -16,18 +16,77 @@
         }
     }
 
-    .destaques {
+    .destaquesFilmes {
 
-        h4{
+        h4 {
             background-color: #011246;
             color: white;
             padding: 0.5em;
             border-radius: 5px;
             font-weight: bold;
         }
-        .filmDestaque {
+
+        img {
             height: 15em;
             width: 10em;
+            border-radius: 5px;
+
+            @media (max-width:1400px) {
+                border-bottom-left-radius: 0;
+                border-bottom-right-radius: 0;
+
+            }
+
+        }
+
+        .infoFilm {
+            margin-top: 1.3em;
+            border-radius: 5px;
+
+            .titleLink {
+
+                font-weight: bold;
+                color: black;
+
+                &:hover {
+                    color: #FC691A;
+                }
+            }
+
+        }
+
+        .ratingFilm {
+            position: absolute;
+            margin-top: -2.6em;
+            font-weight: bold;
+            color: white;
+            padding: 0.5em;
+            background-color: #011246;
+            border-radius: 5px;
+            border-top-left-radius: 0;
+            border-bottom-right-radius: 0;
+
+
+            .TextNota {
+                display: none;
+
+                @media (max-width:1400px) {
+                    display: inline;
+
+                }
+            }
+
+            @media (max-width:1400px) {
+                position: static;
+                padding-top: 1em;
+                margin-top: -0.7em;
+                margin-left: 0em;
+                text-align: center;
+                border-top-left-radius: 0;
+                border-top-right-radius: 0;
+                border-bottom-right-radius: 5px;
+
+            }
         }
     }
 

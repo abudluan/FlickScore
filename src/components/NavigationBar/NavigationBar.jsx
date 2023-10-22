@@ -23,7 +23,7 @@ const NavigationBar = () => {
 
     const isMobile = window.innerWidth < 992;
 
-   
+
     const closeNavbar = () => {
         if (isMobile) {
             setShowBasic(false);
@@ -61,7 +61,13 @@ const NavigationBar = () => {
                 <MDBCollapse navbar show={showBasic}>
                     <MDBNavbarNav className='mr-auto mb-2 mb-lg-0'>
 
-                        <NavLink to="/filmes" className="mx-3 my-2" activeClassName="active" onClick={closeNavbar}> 
+                        <NavLink to="/" className="mx-3 my-2" activeClassName="active" onClick={closeNavbar}>
+                            <MDBNavbarItem>
+                                <MDBNavbarLink>Inicio</MDBNavbarLink>
+                            </MDBNavbarItem>
+                        </NavLink>
+
+                        <NavLink to="/filmes" className="mx-3 my-2" activeClassName="active" onClick={closeNavbar}>
                             <MDBNavbarItem>
                                 <MDBNavbarLink>Filmes</MDBNavbarLink>
                             </MDBNavbarItem>
