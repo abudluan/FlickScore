@@ -17,21 +17,37 @@ import './Home.scss';
 import { apiKey } from './service/api';
 
 const Home = () => {
-    const [latestReleases, setLatestReleases] = useState([]);
+    const [latestReleasesMovies, setLatestReleasesMovies] = useState([]);
+    const [latestReleasesSeries, setLatestReleasesSeries] = useState([]);
 
     useEffect(() => {
         // Fazer uma chamada à API para obter os últimos lançamentos de filmes em cartaz
         axios.get(`https://api.themoviedb.org/3/movie/now_playing`, {
             params: {
                 api_key: apiKey,
-                language: 'pt-br', // Idioma dos resultados (ajuste conforme necessário)
-                page: 1, // Página de resultados
+                language: 'pt-br',
+                page: 1,
             }
         })
             .then(response => {
-                // Obter a lista dos últimos lançamentos de filmes
-                const releases = response.data.results.slice(0, 7); // Pegar os 5 primeiros lançamentos
-                setLatestReleases(releases);
+                const releases = response.data.results.slice(0, 7);
+                setLatestReleasesMovies(releases);
+            })
+            .catch(error => {
+                console.error('Erro na requisição à API do TMDb: ' + error);
+            });
+
+        // Fazer uma chamada à API para obter os últimos lançamentos de séries
+        axios.get(`https://api.themoviedb.org/3/tv/on_the_air`, {
+            params: {
+                api_key: apiKey,
+                language: 'pt-br',
+                page: 1,
+            }
+        })
+            .then(response => {
+                const releases = response.data.results.slice(0, 7);
+                setLatestReleasesSeries(releases);
             })
             .catch(error => {
                 console.error('Erro na requisição à API do TMDb: ' + error);
@@ -40,10 +56,11 @@ const Home = () => {
 
     function formatRating(rating) {
         if (rating === Math.floor(rating)) {
-            return rating.toFixed(1); // Adiciona ".0" às notas inteiras
+            return rating.toFixed(1);
         }
-        return rating.toString(); // Mantém as notas com dígitos decimais
+        return rating.toString();
     }
+
 
     return (
         <section id='home'>
@@ -54,38 +71,64 @@ const Home = () => {
                 </MDBContainer>
             </div>
 
-            <div className='destaquesFilmes'>
+            <div className='destaqueDiv'>
                 <MDBContainer>
-                    <h4>Novidades - Filme</h4>
+                    <h4>Novidades - Filmes</h4>
                     <MDBRow className='flex-nowrap overflow-auto'>
-                        {latestReleases.map(release => (
+                        {latestReleasesMovies.map(release => (
                             <MDBCol key={release.id}>
-                                <Link>
+                                <Link to={`/filme/${release.id}`}>
                                     <img src={`https://image.tmdb.org/t/p/w500${release.poster_path}`} position='top' alt={release.title} />
                                 </Link>
 
-                                <p className='ratingFilm'>
+                                <p className='ratingScore'>
                                     <span className='TextNota'>Nota : </span>{formatRating(release.vote_average)}
                                 </p>
 
-                                <div className='infoFilm'>
-                                    <Link>
-                                        <p className='titleLink'>{release.title}</p>
-                                    </Link>
 
-                                    <p className='dateFilme'>{new Date(release.release_date).toLocaleDateString('pt-BR', {
-                                        day: 'numeric',
-                                        month: 'short',
-                                        year: 'numeric',
-                                    })}</p>
+                                <Link to={`/filme/${release.id}`}>
+                                    <p className='titleLink'>{release.title}</p>
+                                </Link>
 
-                                </div>
+                                <p className='dateRelease'>{new Date(release.release_date).toLocaleDateString('pt-BR', {
+                                    day: 'numeric',
+                                    month: 'short',
+                                    year: 'numeric',
+                                })}</p>
+
+
                             </MDBCol>
                         ))}
                     </MDBRow>
                 </MDBContainer>
             </div>
-        </section>
+
+            <div className='destaqueDiv mt-5'>
+                <MDBContainer>
+                    <h4>Popular - Séries</h4>
+                    <MDBRow className='flex-nowrap overflow-auto'>
+                        {latestReleasesSeries.map(release => (
+                            <MDBCol key={release.id}>
+                                <Link to={`/serie/${release.id}`}>
+                                    <img src={`https://image.tmdb.org/t/p/w500${release.poster_path}`} position='top' alt={release.title} />
+                                </Link>
+
+                                <p className='ratingScore'>
+                                    <span className='TextNota'>Nota : </span>{formatRating(release.vote_average)}
+                                </p>
+
+
+                                <Link to={`/serie/${release.id}`}>
+                                    <p className='titleLink'>{release.name}</p>
+                                </Link>
+
+                            </MDBCol>
+                        ))}
+                    </MDBRow>
+                </MDBContainer>
+
+            </div>
+        </section >
     );
 }
 

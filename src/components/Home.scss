@@ -16,7 +16,7 @@
         }
     }
 
-    .destaquesFilmes {
+    .destaqueDiv {
 
         h4 {
             background-color: #011246;
@@ -39,7 +39,7 @@
 
         }
 
-        .ratingFilm {
+        .ratingScore {
             position: absolute;
             margin-top: -2.6em;
             font-weight: bold;
@@ -76,22 +76,23 @@
             }
         }
 
-        .infoFilm {
+
+
+
+        .titleLink {
+            font-weight: bold;
+            color: black;
+            text-align: left;
             margin-top: 0.5em;
 
-            .titleLink {
-                font-weight: bold;
-                color: black;
-                text-align: left;
-                
-                &:hover {
-                    color: #FC691A;
-                }
+            &:hover {
+                color: #FC691A;
             }
-
         }
 
-        .dateFilme {
+
+
+        .dateRelease {
             text-align: left;
             margin-top: -1.2em;
         }
