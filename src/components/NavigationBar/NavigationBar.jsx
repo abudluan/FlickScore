@@ -18,6 +18,8 @@ import {
 import './NavigationBar.scss';
 import { Link, NavLink } from "react-router-dom";
 
+import NavLogo from '../src/FlickScoreLogo.png';
+
 const NavigationBar = () => {
     const [showBasic, setShowBasic] = useState(false);
 
@@ -43,10 +45,8 @@ const NavigationBar = () => {
     return (
         <MDBNavbar fixed="top" id="NavigationBar" expand='lg' dark>
             <MDBContainer fluid>
-                <MDBNavbarBrand>
-                    <Link to="/">
-                        FlickScore
-                    </Link>
+                <MDBNavbarBrand className="navbarLogo">
+                    <img src={NavLogo}  />
                 </MDBNavbarBrand>
 
                 <MDBNavbarToggler
