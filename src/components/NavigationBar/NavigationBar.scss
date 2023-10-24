@@ -1,24 +1,46 @@
 #NavigationBar {
-    background-color: #011246;
+    background-color: #963143;
     padding: 2em;
 
     @media (max-width:900px) {
         padding: 0;
         padding-top: 1em;
         padding-bottom: 1em;
+
     }
 
     a {
+        font-size: 1em;
         color: white;
-        font-weight: bold;
         border-radius: 5px;
-        padding-left: 0.3em;
-        &:hover {
-            background-color: #FC691A;
+        background-color: transparent;
+        transition: background-color 0.5s ease, color 0.5s ease;
+        position: relative;
+        z-index: 1;
+
+
+        &::after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            bottom: 0%;
+            height: 3px;
+            width: 0;
+            background-color: #ff8959;
+            transition: 0.4s ease 0s, width 0.4s ease 0s, left 0.4s ease 0s;
         }
 
         &.active {
-            background-color: #FC691A;
+            color: #ff8959;
+
+            &::after {
+                left: 0;
+                bottom: 0%;
+                height: 3px;
+                width: 100%;
+
+            }
+
         }
     }
 
@@ -34,16 +56,16 @@
             font-style: italic;
         }
 
-        .form-control {
-            border-color: transparent;
+        .form-control:focus {
+            border-color:white;
         }
 
         .BtnSearch {
-            background-color: #FC691A;
+            background-color: #ff8959;
             box-shadow: none;
 
             &:hover {
-                background-color: #c24400;
+                background-color: #e76836;
             }
         }
     }

@@ -10,6 +10,8 @@ Currently, two official plugins are available:
 
 Paleta de cores utulizada 
 
-#011246 - Azul
-#FC691A - Laranja
-#CD0232 - Vermelho
+.color #6b233f;
+.color #963143;
+.color #d24d46;
+.color #ff8959;
+.color #ffd362;

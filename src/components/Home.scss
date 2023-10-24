@@ -1,14 +1,14 @@
 #home {
     margin-top: 8em;
 
-    @media (max-width: 900px) {
+    @media (max-width: 1400px) {
         margin-top: 5em;
     }
 
     .TextIntro {
-        color: #011246;
+        color: black;
         text-align: center;
-        margin-bottom: 1em;
+        margin-bottom: 2em;
 
         h1,
         h2 {
@@ -19,16 +19,17 @@
     .destaqueDiv {
 
         h4 {
-            background-color: #011246;
+            background-color: #963143;
             color: white;
             padding: 0.5em;
             border-radius: 5px;
             font-weight: bold;
+
+            
         }
 
         img {
-            height: 15em;
-            width: 10em;
+            height: 15.4em;
             border-radius: 5px;
 
             @media (max-width:1400px) {
@@ -45,17 +46,14 @@
             font-weight: bold;
             color: white;
             padding: 0.5em;
-            background-color: #011246;
+            background-color: rgba(150, 48, 67, 0.781);
             border-radius: 5px;
             border-top-left-radius: 0;
             border-bottom-right-radius: 0;
 
-            &:hover {
-                background-color: #FC691A;
-            }
-
             @media (max-width:1400px) {
                 position: static;
+                background-color: rgb(150, 48, 67);
                 padding-top: 1em;
                 margin-top: -0.7em;
                 margin-left: 0em;
@@ -66,18 +64,11 @@
 
             }
 
-            .TextNota {
-                display: none;
-
-                @media (max-width:1400px) {
-                    display: inline;
-
-                }
+            .icon{
+                color: yellow;
+                margin-top: -0.3em;
             }
         }
-
-
-
 
         .titleLink {
             font-weight: bold;
@@ -86,16 +77,37 @@
             margin-top: 0.5em;
 
             &:hover {
-                color: #FC691A;
+                color: #d24d46;
             }
         }
 
+        @media (max-width:1400px) {
+            .dateRelease {
+                text-align: left;
+                margin-top: -1.2em;
+            }
 
+            ::-webkit-scrollbar {
+                width: 0.5em;
+                border-radius: 5px;
+                height: 0.5em;
+            }
 
-        .dateRelease {
-            text-align: left;
-            margin-top: -1.2em;
+            ::-webkit-scrollbar-thumb {
+                background-color: #963143;
+                border-radius: 5px;
+            }
+
+            ::-webkit-scrollbar-track {
+                background-color: rgba(128, 128, 128, 0.267);
+
+                border-radius: 5px;
+                margin: 0 0.5em 0 0.5em;
+            }
         }
+
+        
+
 
     }
 

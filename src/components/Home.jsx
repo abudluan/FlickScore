@@ -1,16 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
+import { ImStarFull } from 'react-icons/im';
 import {
     MDBContainer,
     MDBRow,
     MDBCol,
-    MDBCard,
-    MDBCardImage,
-    MDBCardBody,
-    MDBCardTitle,
-    MDBCardText,
-    MDBBtn,
+    MDBIcon,
+
 } from 'mdb-react-ui-kit';
 import './Home.scss';
 
@@ -82,7 +79,7 @@ const Home = () => {
                                 </Link>
 
                                 <p className='ratingScore'>
-                                    <span className='TextNota'>Nota : </span>{formatRating(release.vote_average)}
+                                    <ImStarFull className='icon' size={20} /> {formatRating(release.vote_average)}
                                 </p>
 
 
@@ -103,7 +100,7 @@ const Home = () => {
                 </MDBContainer>
             </div>
 
-            <div className='destaqueDiv mt-5'>
+            <div className='destaqueDiv mt-5 mb-5'>
                 <MDBContainer>
                     <h4>Popular - Séries</h4>
                     <MDBRow className='flex-nowrap overflow-auto'>
@@ -114,7 +111,7 @@ const Home = () => {
                                 </Link>
 
                                 <p className='ratingScore'>
-                                    <span className='TextNota'>Nota : </span>{formatRating(release.vote_average)}
+                                    <ImStarFull className='icon' size={20} /> {formatRating(release.vote_average)}
                                 </p>
 
 

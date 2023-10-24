@@ -82,7 +82,7 @@ const NavigationBar = () => {
                     </MDBNavbarNav>
 
                     <form className='input-group'>
-                        <input type='search' className='form-control' placeholder='Buscar um Filme, Série ou Pessoa' aria-label='Search' />
+                        <input  className='form-control' placeholder='Buscar um Filme, Série ou Pessoa' aria-label='Search' />
                         <MDBBtn className="BtnSearch">Buscar</MDBBtn>
                     </form>
                 </MDBCollapse>
