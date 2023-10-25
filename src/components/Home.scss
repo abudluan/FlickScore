@@ -8,10 +8,11 @@
     .TextIntro {
         color: black;
         text-align: center;
-        margin-bottom: 2em;
+        padding: 3em;
+        border-radius: 5px;
 
         h1,
-        h2 {
+        h4 {
             font-weight: bold;
         }
     }
@@ -24,8 +25,6 @@
             padding: 0.5em;
             border-radius: 5px;
             font-weight: bold;
-
-            
         }
 
         img {
@@ -64,7 +63,7 @@
 
             }
 
-            .icon{
+            .icon {
                 color: yellow;
                 margin-top: -0.3em;
             }
@@ -73,7 +72,7 @@
         .titleLink {
             font-weight: bold;
             color: black;
-            text-align: left;
+            text-align: center;
             margin-top: 0.5em;
 
             &:hover {
@@ -81,11 +80,12 @@
             }
         }
 
+        .dateRelease {
+            text-align: center;
+            margin-top: -1em;
+        }
+
         @media (max-width:1400px) {
-            .dateRelease {
-                text-align: left;
-                margin-top: -1.2em;
-            }
 
             ::-webkit-scrollbar {
                 width: 0.5em;
@@ -106,7 +106,7 @@
             }
         }
 
-        
+
 
 
     }

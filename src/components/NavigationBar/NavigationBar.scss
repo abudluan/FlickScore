@@ -1,6 +1,7 @@
 #NavigationBar {
     background-color: #963143;
     padding: 2em;
+    box-shadow: none;
 
     @media (max-width:900px) {
         padding: 0;
@@ -24,6 +25,7 @@
     a {
         font-size: 1em;
         color: white;
+        font-weight: bold;
         border-radius: 5px;
         background-color: transparent;
         transition: background-color 0.5s ease, color 0.5s ease;

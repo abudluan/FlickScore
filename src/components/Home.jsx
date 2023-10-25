@@ -61,12 +61,12 @@ const Home = () => {
 
     return (
         <section id='home'>
-            <div className='TextIntro'>
-                <MDBContainer>
-                    <h1>Bem-Vindo(a).</h1>
-                    <h2>Milhões de Filmes, Séries e Pessoas para Descobrir. Explore já.</h2>
-                </MDBContainer>
-            </div>
+
+            <MDBContainer className='TextIntro '>
+                <h1>Bem-Vindo(a).</h1>
+                <h4>Milhões de Filmes, Séries e Pessoas para Descobrir. Explore já.</h4>
+            </MDBContainer>
+
 
             <div className='destaqueDiv'>
                 <MDBContainer>
@@ -75,7 +75,7 @@ const Home = () => {
                         {latestReleasesMovies.map(release => (
                             <MDBCol key={release.id}>
                                 <Link to={`/filme/${release.id}`}>
-                                    <img src={`https://image.tmdb.org/t/p/w500${release.poster_path}`} position='top' alt={release.title} />
+                                    <img src={`https://image.tmdb.org/t/p/w500${release.poster_path}`} alt={release.title} />
                                 </Link>
 
                                 <p className='ratingScore'>
