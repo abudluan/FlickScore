@@ -1,0 +1,25 @@
+#footer {
+    background-color: #963143;
+    color: white;
+    font-weight: bold;
+    padding: 0.5em;
+
+    p {
+        margin-top: 1em;
+
+        a {
+            color: white;
+
+            &:hover {
+                color: #FF8959;
+
+            }
+        }
+
+        .icon {
+            vertical-align: sub;
+        }
+    }
+
+
+}

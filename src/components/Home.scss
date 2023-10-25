@@ -1,19 +1,15 @@
 #home {
-    margin-top: 8em;
+    margin-top: 8.5em;
 
     @media (max-width: 1400px) {
-        margin-top: 5em;
+        margin-top: 5.5em;
     }
 
-    .TextIntro {
-        color: black;
-        text-align: center;
-        padding: 3em;
-        border-radius: 5px;
-
-        h1,
-        h4 {
-            font-weight: bold;
+    .CarouselIntro {
+        margin-bottom: 1em;
+        width: 70em;
+        @media (max-width:1400px) {
+            width: auto;
         }
     }
 
@@ -109,6 +105,10 @@
 
 
 
+    }
+
+    .trailers {
+        background-color: #d24d46;
     }
 
 

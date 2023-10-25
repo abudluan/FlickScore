@@ -7,6 +7,8 @@ import {
     MDBRow,
     MDBCol,
     MDBIcon,
+    MDBCarousel,
+    MDBCarouselItem,
 
 } from 'mdb-react-ui-kit';
 import './Home.scss';
@@ -16,6 +18,7 @@ import { apiKey } from './service/api';
 const Home = () => {
     const [latestReleasesMovies, setLatestReleasesMovies] = useState([]);
     const [latestReleasesSeries, setLatestReleasesSeries] = useState([]);
+    const [trailers, setTrailers] = useState([]);
 
     useEffect(() => {
         // Fazer uma chamada à API para obter os últimos lançamentos de filmes em cartaz
@@ -28,6 +31,7 @@ const Home = () => {
         })
             .then(response => {
                 const releases = response.data.results.slice(0, 7);
+                releases.sort((a, b) => new Date(b.release_date) - new Date(a.release_date));
                 setLatestReleasesMovies(releases);
             })
             .catch(error => {
@@ -58,13 +62,60 @@ const Home = () => {
         return rating.toString();
     }
 
+    function fetchTrailers(mediaItems) {
+        const trailerPromises = mediaItems.map(item => {
+            const mediaType = item.media_type === 'movie' ? 'movie' : 'tv';
+            return axios.get(`https://api.themoviedb.org/3/${mediaType}/${item.id}/videos`, {
+                params: {
+                    api_key: apiKey,
+                    language: 'pt-br',
+                }
+            });
+        });
+
+        Promise.all(trailerPromises)
+            .then(trailerResponses => {
+                const trailersData = trailerResponses.map(response => response.data.results);
+                setTrailers(trailersData);
+            })
+            .catch(error => {
+                console.error('Erro na requisição à API do TMDb para trailers: ' + error);
+            });
+    }
+
 
     return (
         <section id='home'>
 
-            <MDBContainer className='TextIntro '>
-                <h1>Bem-Vindo(a).</h1>
-                <h4>Milhões de Filmes, Séries e Pessoas para Descobrir. Explore já.</h4>
+            <MDBContainer className='CarouselIntro'>
+                <MDBCarousel showIndicators showControls fade>
+                    <MDBCarouselItem
+                        className='carouselImg w-100 d-block'
+                        itemId={1}
+                        src={'https://mdbootstrap.com/img/Photos/Slides/img%20(15).jpg'}
+                        alt='...'
+                    >
+
+                    </MDBCarouselItem>
+
+                    <MDBCarouselItem
+                        className='w-100 d-block'
+                        itemId={2}
+                        src='https://mdbootstrap.com/img/Photos/Slides/img%20(22).jpg'
+                        alt='...'
+                    >
+
+                    </MDBCarouselItem>
+
+                    <MDBCarouselItem
+                        className='w-100 d-block'
+                        itemId={3}
+                        src='https://mdbootstrap.com/img/Photos/Slides/img%20(23).jpg'
+                        alt='...'
+                    >
+
+                    </MDBCarouselItem>
+                </MDBCarousel>
             </MDBContainer>
 
 
@@ -123,8 +174,10 @@ const Home = () => {
                         ))}
                     </MDBRow>
                 </MDBContainer>
-
             </div>
+
+
+
         </section >
     );
 }

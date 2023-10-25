@@ -18,7 +18,7 @@ import {
 import './NavigationBar.scss';
 import { Link, NavLink } from "react-router-dom";
 
-import NavLogo from '../src/FlickScoreLogo.png';
+import NavLogo from '../img/FlickScoreLogo.png';
 
 const NavigationBar = () => {
     const [showBasic, setShowBasic] = useState(false);

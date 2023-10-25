@@ -6,6 +6,8 @@ import './App.css'
 
 import NavigationBar from './components/NavigationBar/NavigationBar';
 import Home from './components/Home';
+import SelectPage from './components/selectPage/SelectPage';
+import Footer from './components/Footer/Footer';
 
 function App() {
   return (
@@ -14,7 +16,9 @@ function App() {
         <NavigationBar />
         <Routes>
           <Route exact path='/' element={<Home />} />
+          <Route exact path='/filme/:id' element={<SelectPage />} />
         </Routes>
+        <Footer />
       </Router>
     </>
   )
