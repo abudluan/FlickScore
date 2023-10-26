@@ -44,6 +44,10 @@
             transition: 0.4s ease 0s, width 0.4s ease 0s, left 0.4s ease 0s;
         }
 
+        &:hover {
+            color: #ff8959;
+        }
+
         &.active {
             color: #ff8959;
 

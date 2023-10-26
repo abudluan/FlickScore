@@ -17,6 +17,7 @@ function App() {
         <Routes>
           <Route exact path='/' element={<Home />} />
           <Route exact path='/filme/:id' element={<SelectPage />} />
+          <Route exact path='/serie/:id' element={<SelectPage />} />
         </Routes>
         <Footer />
       </Router>
