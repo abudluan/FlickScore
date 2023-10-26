@@ -6,20 +6,29 @@ import {
     MDBContainer,
     MDBRow,
     MDBCol,
-    MDBIcon,
     MDBCarousel,
     MDBCarouselItem,
-
+    MDBCard,
+    MDBCardTitle,
+    MDBCardText,
+    MDBCardBody,
+    MDBCardImage,
+    MDBCardFooter,
 } from 'mdb-react-ui-kit';
 import './Home.scss';
 
+import HomeCapa1 from './img/homeCapa1.webp';
+import HomeCapa2 from './img/homeCapa2.webp';
+import HomeCapa3 from './img/homeCapa3.webp';
+import HomeCapa4 from './img/homeCapa4.webp';
 
 import { apiKey } from './service/api';
 
 const Home = () => {
     const [latestReleasesMovies, setLatestReleasesMovies] = useState([]);
     const [latestReleasesSeries, setLatestReleasesSeries] = useState([]);
-    const [trailers, setTrailers] = useState([]);
+    const [forYouMovie, setForYouMovie] = useState(null);
+    const [forYouSerie, setForYouSerie] = useState(null);
 
     useEffect(() => {
         // Fazer uma chamada à API para obter os últimos lançamentos de filmes em cartaz
@@ -63,31 +72,53 @@ const Home = () => {
         return rating.toString();
     }
 
-    function fetchTrailers(mediaItems) {
-        const trailerPromises = mediaItems.map(item => {
-            const mediaType = item.media_type === 'movie' ? 'movie' : 'tv';
-            return axios.get(`https://api.themoviedb.org/3/${mediaType}/${item.id}/videos`, {
-                params: {
-                    api_key: apiKey,
-                    language: 'pt-br',
-                }
-            });
-        });
-
-        Promise.all(trailerPromises)
-            .then(trailerResponses => {
-                const trailersData = trailerResponses.map(response => response.data.results);
-                setTrailers(trailersData);
-            })
-            .catch(error => {
-                console.error('Erro na requisição à API do TMDb para trailers: ' + error);
-            });
-    }
-
 
     return (
         <section id='home'>
 
+            <MDBContainer>
+                <div className='TextIntro'>
+                    <MDBContainer>
+                        <h1>Milhões de Filmes e Séries para Descobrir. Explore já!</h1>
+                    </MDBContainer>
+                </div>
+            </MDBContainer>
+
+            <div className='container imgCapa'>
+                <MDBCarousel showIndicators fade>
+                    <MDBCarouselItem
+                        className='w-100 d-block'
+                        itemId={1}
+                        src={HomeCapa1}
+                        alt='...'
+                    >
+                    </MDBCarouselItem>
+
+                    <MDBCarouselItem
+                        className='w-100 d-block'
+                        itemId={2}
+                        src={HomeCapa2}
+                        alt='...'
+                    >
+                    </MDBCarouselItem>
+
+                    <MDBCarouselItem
+                        className='w-100 d-block'
+                        itemId={3}
+                        src={HomeCapa3}
+                        alt='...'
+                    >
+                    </MDBCarouselItem>
+
+                    <MDBCarouselItem
+                        className='w-100 d-block'
+                        itemId={3}
+                        src={HomeCapa4}
+                        alt='...'
+                    >
+                    </MDBCarouselItem>
+                </MDBCarousel>
+            </div>
 
             <div className='destaqueDiv'>
                 <MDBContainer>
@@ -103,7 +134,6 @@ const Home = () => {
                                     <ImStarFull className='icon' size={20} /> {formatRating(release.vote_average)}
                                 </p>
 
-
                                 <Link to={`/filme/${release.id}`}>
                                     <p className='titleLink'>{release.title}</p>
                                 </Link>
@@ -113,7 +143,6 @@ const Home = () => {
                                     month: 'short',
                                     year: 'numeric',
                                 })}</p>
-
 
                             </MDBCol>
                         ))}
@@ -135,20 +164,17 @@ const Home = () => {
                                     <ImStarFull className='icon' size={20} /> {formatRating(release.vote_average)}
                                 </p>
 
-
                                 <Link to={`/serie/${release.id}`}>
                                     <p className='titleLink'>{release.name}</p>
                                 </Link>
-
                             </MDBCol>
                         ))}
                     </MDBRow>
                 </MDBContainer>
             </div>
 
-
-
-        </section >
+           
+        </section>
     );
 }
 
