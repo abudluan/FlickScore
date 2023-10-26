@@ -11,6 +11,7 @@
         @media (max-width:1400px) {
             width: auto;
         }
+        
     }
 
     .destaqueDiv {
@@ -24,15 +25,13 @@
         }
 
         img {
-            height: 15.4em;
+            height: 15.3em;
             border-radius: 5px;
 
             @media (max-width:1400px) {
                 border-bottom-left-radius: 0;
                 border-bottom-right-radius: 0;
-
             }
-
         }
 
         .ratingScore {

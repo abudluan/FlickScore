@@ -13,6 +13,7 @@ import {
 } from 'mdb-react-ui-kit';
 import './Home.scss';
 
+
 import { apiKey } from './service/api';
 
 const Home = () => {
@@ -86,37 +87,6 @@ const Home = () => {
 
     return (
         <section id='home'>
-
-            <MDBContainer className='CarouselIntro'>
-                <MDBCarousel showIndicators showControls fade>
-                    <MDBCarouselItem
-                        className='carouselImg w-100 d-block'
-                        itemId={1}
-                        src={'https://mdbootstrap.com/img/Photos/Slides/img%20(15).jpg'}
-                        alt='...'
-                    >
-
-                    </MDBCarouselItem>
-
-                    <MDBCarouselItem
-                        className='w-100 d-block'
-                        itemId={2}
-                        src='https://mdbootstrap.com/img/Photos/Slides/img%20(22).jpg'
-                        alt='...'
-                    >
-
-                    </MDBCarouselItem>
-
-                    <MDBCarouselItem
-                        className='w-100 d-block'
-                        itemId={3}
-                        src='https://mdbootstrap.com/img/Photos/Slides/img%20(23).jpg'
-                        alt='...'
-                    >
-
-                    </MDBCarouselItem>
-                </MDBCarousel>
-            </MDBContainer>
 
 
             <div className='destaqueDiv'>
