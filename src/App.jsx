@@ -6,7 +6,7 @@ import './App.css'
 
 import NavigationBar from './components/NavigationBar/NavigationBar';
 import Home from './components/Home';
-import SelectPage from './components/selectPage/SelectPage';
+import MovieSelect from './components/MovieSelect/MovieSelect';
 import Footer from './components/Footer/Footer';
 
 function App() {
@@ -16,8 +16,7 @@ function App() {
         <NavigationBar />
         <Routes>
           <Route exact path='/' element={<Home />} />
-          <Route exact path='/filme/:id' element={<SelectPage />} />
-          <Route exact path='/serie/:id' element={<SelectPage />} />
+          <Route exact path='/filme/:id' element={<MovieSelect />} />
         </Routes>
         <Footer />
       </Router>
