@@ -10,6 +10,8 @@
     img {
         margin: auto;
         border-radius: 5px;
+        border-bottom-left-radius: 0;
+        border-bottom-right-radius: 0;
     }
 
     h1 {
@@ -51,11 +53,22 @@
         padding-top: 1em;
         padding-bottom: 1em;
         margin-top: -0.2em;
-        
-        
+
+
         .icon {
             margin-top: -0.3em;
             color: rgb(224, 224, 0);
+        }
+    }
+
+    .seeToo {
+        h2 {
+            margin-top: 2em;
+            background-color: #963143;
+            color: white;
+            padding: 0.5em;
+            border-radius: 5px;
+            font-weight: bold;
         }
     }
 }

@@ -27,8 +27,6 @@ import { apiKey } from './service/api';
 const Home = () => {
     const [latestReleasesMovies, setLatestReleasesMovies] = useState([]);
     const [latestReleasesSeries, setLatestReleasesSeries] = useState([]);
-    const [forYouMovie, setForYouMovie] = useState(null);
-    const [forYouSerie, setForYouSerie] = useState(null);
 
     useEffect(() => {
         // Fazer uma chamada à API para obter os últimos lançamentos de filmes em cartaz
@@ -85,9 +83,9 @@ const Home = () => {
             </MDBContainer>
 
             <div className='container imgCapa'>
-                <MDBCarousel showIndicators fade>
+                <MDBCarousel showIndicators showControls fade>
                     <MDBCarouselItem
-                        className='w-100 d-block'
+                        className='carouselImg w-100 d-block'
                         itemId={1}
                         src={HomeCapa1}
                         alt='...'
