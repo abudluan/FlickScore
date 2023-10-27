@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom';
 import { Link } from "react-router-dom";
 import axios from 'axios';
 import './MovieSelect.scss';
-import { MDBContainer, MDBRow, MDBCol, MDBCardImage } from "mdb-react-ui-kit";
+import { MDBContainer, MDBRow, MDBCol, MDBCardImage, MDBBtn } from "mdb-react-ui-kit";
 import { apiKey } from '../service/api';
 import { RiCalendarTodoFill } from 'react-icons/ri';
 import { MdOutlineAttachMoney } from 'react-icons/md';
@@ -16,6 +16,9 @@ const MovieSelect = () => {
     const [selectedMovie, setSelectedMovie] = useState(null);
     const [selectedMovieGenre, setSelectedMovieGenre] = useState(null);
     const [relatedMovies, setRelatedMovies] = useState([]);
+    const [moviesToShow, setMoviesToShow] = useState(4);
+    const [totalMovies, setTotalMovies] = useState(0);
+
 
     useEffect(() => {
         // Certifique-se de que é uma rota de filme (você não deseja informações de séries)
@@ -37,28 +40,52 @@ const MovieSelect = () => {
                 .catch(error => {
                     console.error('Erro na requisição à API do TMDb para filmes: ' + error);
                 });
-
-            // Fazer uma chamada à API para obter filmes relacionados do mesmo gênero
-            if (selectedMovieGenre) {
-                axios.get(`https://api.themoviedb.org/3/discover/movie`, {
-                    params: {
-                        api_key: apiKey,
-                        language: 'pt-br',
-                        with_genres: selectedMovieGenre,
-                    }
-                })
-                    .then(response => {
-                        setRelatedMovies(response.data.results);
-                    })
-                    .catch(error => {
-                        console.error('Erro na requisição à API do TMDb para filmes relacionados: ' + error);
-                    });
-            }
         }
-    }, [id, selectedMovieGenre]);
+    }, [id]);
+
+    useEffect(() => {
+        // Fazer uma chamada à API para obter filmes relacionados do mesmo gênero
+        if (selectedMovieGenre) {
+            axios.get(`https://api.themoviedb.org/3/discover/movie`, {
+                params: {
+                    api_key: apiKey,
+                    language: 'pt-br',
+                    with_genres: selectedMovieGenre,
+                }
+            })
+                .then(response => {
+                    const relatedMovies = response.data.results;
+
+                    // Filtrar o filme selecionado da lista de filmes relacionados
+                    const filteredRelatedMovies = relatedMovies.filter(movie => movie.id !== selectedMovie.id);
+
+                    setRelatedMovies(filteredRelatedMovies);
+                    setTotalMovies(filteredRelatedMovies.length); // Atualize o total de filmes
+                })
+                .catch(error => {
+                    console.error('Erro na requisição à API do TMDb para filmes relacionados: ' + error);
+                });
+        }
+    }, [selectedMovieGenre, selectedMovie]);
+
+    useEffect(() => {
+        if (selectedMovie) {
+            setMoviesToShow(4);
+        }
+    }, [selectedMovie]);
 
     const formatBudget = (budget) => {
         return budget.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+    }
+
+    const loadMoreMovies = () => {
+        // Define a quantidade de filmes a serem exibidos
+        const newMoviesToShow = moviesToShow + 4;
+
+        // Verifica se ainda há mais filmes para carregar
+        if (newMoviesToShow <= totalMovies) {
+            setMoviesToShow(newMoviesToShow);
+        }
     }
 
     return (
@@ -99,7 +126,7 @@ const MovieSelect = () => {
 
                                     <div className="infoDatas">
                                         <h5><FaMoneyBillWave className="icon" size={20} /> Receita:</h5>
-                                        <p>{selectedMovie.revenue ? formatBudget(selectedMovie.revenue) : 'Ainda não disponível'}</p>
+                                        <p>{selectedMovie.revenue ? formatBudget(selectedMovie.revenue) : 'Informação não disponível'}</p>
                                     </div>
 
                                     <div className="infoDatas">
@@ -121,7 +148,7 @@ const MovieSelect = () => {
                 <MDBContainer>
                     <h2>Relacionados</h2>
                     <MDBRow>
-                        {relatedMovies.map(movie => (
+                        {relatedMovies.slice(0, moviesToShow).map(movie => (
                             <MDBCol md={3} key={movie.id}>
                                 {movie.poster_path ? (
                                     <Link to={`/filme/${movie.id}`}>
@@ -134,8 +161,18 @@ const MovieSelect = () => {
                             </MDBCol>
                         ))}
                     </MDBRow>
+                    {moviesToShow < totalMovies && (
+                        <MDBRow>
+                            <MDBCol md={12}>
+                                <MDBBtn onClick={loadMoreMovies} color="primary">
+                                    Carregar Mais
+                                </MDBBtn>
+                            </MDBCol>
+                        </MDBRow>
+                    )}
                 </MDBContainer>
             </div>
+
         </section>
     );
 }
