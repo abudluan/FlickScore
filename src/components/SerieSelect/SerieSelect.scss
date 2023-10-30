@@ -1,0 +1,89 @@
+#selected {
+    margin-top: 10em;
+    margin-bottom: 2em;
+
+    @media (max-width:1400px) {
+        margin-top: 6em;
+        text-align: center;
+    }
+
+    img {
+        margin: auto;
+        border-radius: 5px;
+        border-bottom-left-radius: 0;
+        border-bottom-right-radius: 0;
+    }
+
+    h1 {
+        font-weight: bold;
+        margin-left: 1em;
+        text-align: center;
+
+        @media (max-width:1400px) {
+            margin-left: 0em;
+            margin-top: 1em;
+        }
+    }
+
+    .seriesDesc {
+        text-align: justify;
+    }
+
+    .infoDatas {
+        text-align: left;
+
+        h5 {
+            font-weight: bold;
+
+            .icon {
+                margin-top: -0.2em;
+            }
+        }
+    }
+
+    .ratingSerie {
+        background-color: #ff731d;
+        text-align: center;
+        color: white;
+        font-weight: bold;
+        border-bottom-left-radius: 5px;
+        border-bottom-right-radius: 5px;
+        padding-top: 1em;
+        padding-bottom: 1em;
+        margin-top: -0.2em;
+
+
+        .icon {
+            margin-top: -0.3em;
+            color: rgb(224, 224, 0);
+        }
+    }
+
+    .seeToo {
+        text-align: center;
+
+        h2 {
+            margin-top: 2em;
+            background-color: #113b8f;
+            color: white;
+            padding: 0.5em;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+
+        img {
+            height: 20em;
+            margin-top: 1em;
+            border-radius: 5px;
+        }
+
+        h5{
+            margin-top: 0.5em;
+        }
+
+        .btnShowMore {
+            background-color: #113b8f;
+            box-shadow: none;
+        }
+    }
+}

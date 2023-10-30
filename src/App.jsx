@@ -9,6 +9,7 @@ import ScrollTopRedirect from './components/uti/ScrollTopRedirect';
 import NavigationBar from './components/NavigationBar/NavigationBar';
 import Home from './components/Home';
 import MovieSelect from './components/MovieSelect/MovieSelect';
+import SerieSelect from './components/SerieSelect/SerieSelect';
 import Footer from './components/Footer/Footer';
 
 function App() {
@@ -20,6 +21,7 @@ function App() {
         <Routes>
           <Route exact path='/' element={<Home />} />
           <Route exact path='/filme/:id' element={<MovieSelect />} />
+          <Route exact path='/serie/:id' element={<SerieSelect />} />
         </Routes>
         <Footer />
       </Router>
