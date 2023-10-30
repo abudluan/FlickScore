@@ -167,7 +167,7 @@ const MovieSelect = () => {
                     {loadedMoviesCount < totalMovies && (
                         <MDBRow>
                             <MDBCol md={12}>
-                                <MDBBtn onClick={loadMoreMovies} className="btnShowMore">
+                                <MDBBtn onClick={loadMoreMovies}>
                                     Carregar Mais
                                 </MDBBtn>
                             </MDBCol>
