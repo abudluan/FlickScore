@@ -1,5 +1,5 @@
 #NavigationBar {
-    background-color: #963143;
+    background-color: #113b8f;
     padding: 2em;
     box-shadow: none;
 
@@ -13,7 +13,7 @@
     .navbarLogo {
 
         img {
-            height: 3em;
+            height: 2.5em;
 
             @media (max-width:1400px) {
                 height: 2em;
@@ -40,7 +40,7 @@
             bottom: 0%;
             height: 3px;
             width: 0;
-            background-color: #ff8959;
+            background-color: #ff731d;
             transition: 0.4s ease 0s, width 0.4s ease 0s, left 0.4s ease 0s;
         }
 
@@ -55,7 +55,7 @@
         }
 
         &.active {
-            color: #ff8959;
+            color: #ff731d;
 
             &::after {
                 left: 0;
@@ -85,7 +85,7 @@
         }
 
         .BtnSearch {
-            background-color: #ff8959;
+            background-color: #ff731d;
             box-shadow: none;
 
             &:hover {

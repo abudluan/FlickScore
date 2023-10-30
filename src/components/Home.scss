@@ -9,14 +9,14 @@
 
     .TextIntro {
         text-align: center;
-        background-color: #963144;
+        background-color: #113b8f;
         padding: 1em;
         border-radius: 5px;
         margin-bottom: 1em;
 
         h1 {
             margin: auto;
-            background-color: #ff8959;
+            background-color: #ff731d;
             width: 20em;
             color: white;
             border-radius: 5px;
@@ -44,7 +44,7 @@
     .destaqueDiv {
 
         h4 {
-            background-color: #963143;
+            background-color: #113b8f;
             color: white;
             padding: 0.5em;
             border-radius: 5px;
@@ -67,14 +67,14 @@
             font-weight: bold;
             color: white;
             padding: 0.5em;
-            background-color: rgba(150, 48, 67, 0.781);
+            background-color: #ff741dbd;
             border-radius: 5px;
             border-top-left-radius: 0;
             border-bottom-right-radius: 0;
 
             @media (max-width:1400px) {
                 position: static;
-                background-color: rgb(150, 48, 67);
+                background-color: #ff731d;
                 padding-top: 1em;
                 margin-top: -0.7em;
                 margin-left: 0em;
@@ -98,7 +98,7 @@
             margin-top: 0.5em;
 
             &:hover {
-                color: #d24d46;
+                color: #ff731d;
             }
         }
 
@@ -112,17 +112,16 @@
             ::-webkit-scrollbar {
                 width: 0.5em;
                 border-radius: 5px;
-                height: 0.5em;
+                height: 0.3em;
             }
 
             ::-webkit-scrollbar-thumb {
-                background-color: #963143;
+                background-color: #113b8f;
                 border-radius: 5px;
             }
 
             ::-webkit-scrollbar-track {
-                background-color: rgba(128, 128, 128, 0.267);
-
+                background-color: rgba(0, 0, 0, 0.267);
                 border-radius: 5px;
                 margin: 0 0.5em 0 0.5em;
             }
