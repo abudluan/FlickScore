@@ -62,6 +62,8 @@
     }
 
     .seeToo {
+        text-align: center;
+
         h2 {
             margin-top: 2em;
             background-color: #963143;
@@ -69,6 +71,21 @@
             padding: 0.5em;
             border-radius: 5px;
             font-weight: bold;
+        }
+
+        img {
+            height: 20em;
+            margin-top: 1em;
+            border-radius: 5px;
+        }
+
+        h5{
+            margin-top: 0.5em;
+        }
+
+        .btnShowMore {
+            background-color: #963143;
+            box-shadow: none;
         }
     }
 }

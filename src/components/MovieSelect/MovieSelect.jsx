@@ -18,6 +18,8 @@ const MovieSelect = () => {
     const [relatedMovies, setRelatedMovies] = useState([]);
     const [moviesToShow, setMoviesToShow] = useState(4);
     const [totalMovies, setTotalMovies] = useState(0);
+    const [loadedMoviesCount, setLoadedMoviesCount] = useState(4);
+
 
 
     useEffect(() => {
@@ -79,14 +81,15 @@ const MovieSelect = () => {
     }
 
     const loadMoreMovies = () => {
-        // Define a quantidade de filmes a serem exibidos
-        const newMoviesToShow = moviesToShow + 4;
-
         // Verifica se ainda há mais filmes para carregar
-        if (newMoviesToShow <= totalMovies) {
-            setMoviesToShow(newMoviesToShow);
+        if (loadedMoviesCount + 4 <= totalMovies) {
+            setLoadedMoviesCount(loadedMoviesCount + 4);
+        } else {
+            // Se não houver mais filmes para carregar, você pode ocultar o botão ou fornecer uma mensagem.
+            // Aqui, vou simplesmente ocultar o botão.
+            setLoadedMoviesCount(totalMovies);
         }
-    }
+    };
 
     return (
         <section id="selected">
@@ -148,7 +151,7 @@ const MovieSelect = () => {
                 <MDBContainer>
                     <h2>Relacionados</h2>
                     <MDBRow>
-                        {relatedMovies.slice(0, moviesToShow).map(movie => (
+                        {relatedMovies.slice(0, loadedMoviesCount).map(movie => (
                             <MDBCol md={3} key={movie.id}>
                                 {movie.poster_path ? (
                                     <Link to={`/filme/${movie.id}`}>
@@ -161,10 +164,10 @@ const MovieSelect = () => {
                             </MDBCol>
                         ))}
                     </MDBRow>
-                    {moviesToShow < totalMovies && (
+                    {loadedMoviesCount < totalMovies && (
                         <MDBRow>
                             <MDBCol md={12}>
-                                <MDBBtn onClick={loadMoreMovies} color="primary">
+                                <MDBBtn onClick={loadMoreMovies} className="btnShowMore">
                                     Carregar Mais
                                 </MDBBtn>
                             </MDBCol>
