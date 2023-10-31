@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { useParams } from 'react-router-dom';
 import { Link } from "react-router-dom";
 import axios from 'axios';
@@ -19,7 +19,11 @@ const MovieSelect = () => {
     const [moviesToShow, setMoviesToShow] = useState(4);
     const [totalMovies, setTotalMovies] = useState(0);
     const [loadedMoviesCount, setLoadedMoviesCount] = useState(4);
-
+    const [cast, setCast] = useState([]);
+    const containerRef = useRef(null);
+    const [isMouseDown, setIsMouseDown] = useState(false);
+    const [mouseDownX, setMouseDownX] = useState(0);
+    const [scrollLeft, setScrollLeft] = useState(0);
 
 
     useEffect(() => {
@@ -76,6 +80,24 @@ const MovieSelect = () => {
         }
     }, [selectedMovie]);
 
+    useEffect(() => {
+        if (selectedMovie) {
+            // Fazer uma chamada à API para obter informações de elenco
+            axios.get(`https://api.themoviedb.org/3/movie/${selectedMovie.id}/credits`, {
+                params: {
+                    api_key: apiKey,
+                    language: 'pt-br',
+                }
+            })
+                .then(response => {
+                    setCast(response.data.cast);
+                })
+                .catch(error => {
+                    console.error('Erro na requisição à API do TMDb para informações de elenco: ' + error);
+                });
+        }
+    }, [selectedMovie]);
+
     const formatBudget = (budget) => {
         return budget.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
     }
@@ -90,6 +112,23 @@ const MovieSelect = () => {
             setLoadedMoviesCount(totalMovies);
         }
     };
+
+    const handleMouseDown = (event) => {
+        setIsMouseDown(true);
+        setMouseDownX(event.clientX);
+        setScrollLeft(containerRef.current.scrollLeft);
+    };
+
+    const handleMouseMove = (event) => {
+        if (!isMouseDown) return;
+        const delta = event.clientX - mouseDownX;
+        containerRef.current.scrollLeft = scrollLeft - delta;
+    };
+
+    const handleMouseUp = () => {
+        setIsMouseDown(false);
+    };
+
 
     return (
         <section id="selected">
@@ -137,13 +176,31 @@ const MovieSelect = () => {
                                         <p>{selectedMovie.runtime ? `${selectedMovie.runtime} minutos` : 'Informação não disponível'}</p>
                                     </div>
 
-                                    <div className="atores">
 
-                                    </div>
                                 </MDBContainer>
                             </MDBCol>
                         </MDBRow>
                     )}
+                    <div className="atores">
+                        <h2>Atores</h2>
+                        <MDBContainer>
+                            <MDBRow
+                                className="flex-nowrap overflow-auto pb-2 RowAtores"
+                                ref={containerRef}
+                                onMouseDown={handleMouseDown}
+                                onMouseMove={handleMouseMove}
+                                onMouseUp={handleMouseUp}
+                                onMouseLeave={handleMouseUp}>
+                                {cast.map(actor => (
+                                    <MDBCol key={actor.id}>
+                                        <MDBCardImage src={`https://image.tmdb.org/t/p/w200${actor.profile_path}`} alt={actor.name} />
+                                        <h5>{actor.name}</h5>
+
+                                    </MDBCol>
+                                ))}
+                            </MDBRow>
+                        </MDBContainer>
+                    </div>
                 </MDBContainer>
             </div>
 

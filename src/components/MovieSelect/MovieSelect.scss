@@ -59,6 +59,45 @@
         }
     }
 
+
+    .atores {
+        user-select: none;
+        text-align: center;
+
+        h2 {
+            background-color: #113b8f;
+            color: white;
+            padding: 0.5em;
+            border-radius: 5px;
+        }
+
+        .RowAtores{
+            
+        }
+
+        img {
+            height: 10em;
+            border-radius: 5px;
+        }
+
+        ::-webkit-scrollbar {
+            width: 0.5em;
+            border-radius: 5px;
+            height: 0.5em;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background-color: #ff731d;
+            border-radius: 5px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background-color: #3a3a3a50;
+            border-radius: 5px;
+            margin: 0 0.5em 0 0.5em;
+        }
+    }
+
     .seeToo {
         text-align: center;
 
@@ -72,18 +111,18 @@
         }
 
         img {
-            height: 20em;
+
             margin-top: 1em;
             border-radius: 5px;
         }
 
-        h5{
+        h5 {
             margin-top: 0.5em;
         }
 
         Button {
             background-color: #113b8f;
-            
+
         }
     }
 }
