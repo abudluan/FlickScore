@@ -1,17 +1,17 @@
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Roboto&display=swap');
 
 #home {
-    margin-top: 8.5em;
+    margin-top: 7em;
 
     @media (max-width: 1400px) {
-        margin-top: 5.5em;
+        margin-top: 5em;
     }
 
     .TextIntro {
         text-align: center;
         background-color: #113b8f;
         padding: 1em;
-        border-radius: 5px;
+        
         margin-bottom: 1em;
 
         h1 {
@@ -35,10 +35,6 @@
     .imgCapa {
         text-align: center;
         margin-bottom: 1em;
-
-        img {
-            border-radius: 5px;
-        }
     }
 
     .destaqueDiv {

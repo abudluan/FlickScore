@@ -17,10 +17,9 @@ import {
 } from 'mdb-react-ui-kit';
 import './Home.scss';
 
-import HomeCapa1 from './img/homeCapa1.webp';
-import HomeCapa2 from './img/homeCapa2.webp';
-import HomeCapa3 from './img/homeCapa3.webp';
-import HomeCapa4 from './img/homeCapa4.webp';
+import HomeCapa1 from './img/homeCapa1.jpg';
+import HomeCapa2 from './img/homeCapa2.jpg';
+
 
 import { apiKey } from './service/api';
 
@@ -73,22 +72,14 @@ const Home = () => {
 
     return (
         <section id='home'>
-
-            <MDBContainer>
-                <div className='TextIntro'>
-                    <MDBContainer>
-                        <h1>Milhões de Filmes e Séries para Descobrir. Explore já!</h1>
-                    </MDBContainer>
-                </div>
-            </MDBContainer>
-
-            <div className='container imgCapa'>
+            <div className=' imgCapa'>
                 <MDBCarousel showIndicators showControls fade>
                     <MDBCarouselItem
                         className='carouselImg w-100 d-block'
                         itemId={1}
                         src={HomeCapa1}
                         alt='...'
+                        
                     >
                     </MDBCarouselItem>
 
@@ -99,24 +90,17 @@ const Home = () => {
                         alt='...'
                     >
                     </MDBCarouselItem>
-
-                    <MDBCarouselItem
-                        className='w-100 d-block'
-                        itemId={3}
-                        src={HomeCapa3}
-                        alt='...'
-                    >
-                    </MDBCarouselItem>
-
-                    <MDBCarouselItem
-                        className='w-100 d-block'
-                        itemId={3}
-                        src={HomeCapa4}
-                        alt='...'
-                    >
-                    </MDBCarouselItem>
                 </MDBCarousel>
             </div>
+            
+                <div className='TextIntro'>
+                    <MDBContainer>
+                        <h1>Milhões de Filmes e Séries para Descobrir. Explore já!</h1>
+                    </MDBContainer>
+                </div>
+            
+
+
 
             <div className='destaqueDiv'>
                 <MDBContainer>
@@ -171,7 +155,7 @@ const Home = () => {
                 </MDBContainer>
             </div>
 
-           
+
         </section>
     );
 }

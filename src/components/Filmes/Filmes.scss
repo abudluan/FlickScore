@@ -1,6 +1,6 @@
 #filmes {
-    margin-top: 10em;
-    text-align: center;
+    margin-top: 8em;
+    text-align: left;
 
     h2 {
         background-color: #113b8f;
@@ -9,11 +9,64 @@
         padding: 0.5em;
     }
 
-    img {
-        border-radius: 5px;
+    .cardFilme {
+        margin-bottom: 1.5em;
+        height: 25em;
+        background-color: #ffffff;
+
+        @media (max-width: 1400px) {
+            height: auto;
+            margin-bottom: 1em;
+        }
+
+        img {
+            border-radius: 5px;
+            border-bottom-right-radius: 0;
+            border-bottom-left-radius: 0;
+
+            @media (max-width: 1400px) {
+                border-radius: 5px;
+                height: 12em;
+                width: 8em;
+            }
+        }
+
+        .filmTitle {
+            color: black;
+            font-weight: bold;
+            margin-left: 0.5em;
+            margin-top: 0.5em;
+        }
+
+        .dateRelease {
+            margin-top: -0.5em;
+            color: gray;
+            margin-left: 0.5em;
+        }
+
+        .filmeDesc {
+            display: none;
+            margin-top: -0.5em;
+            margin-left: 0.5em;
+            margin-right: 1em;
+            color: black;
+            @media (max-width:1400px) {
+                display: block;
+                overflow: hidden;
+                height: 4.5em;
+            }
+        }
+
+        @media (max-width: 1400px) {
+            flex-direction: row;
+        }
     }
 
-    Button{
+
+
+    Button {
+        width: 100%;
+        padding: 1.2em;
         margin-bottom: 4em;
         background-color: #113b8f;
     }

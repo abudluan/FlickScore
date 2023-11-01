@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from 'axios';
 import './Filmes.scss';
 import { Link } from "react-router-dom";
-import { MDBCol, MDBContainer, MDBRow, MDBCardImage, MDBBtn } from "mdb-react-ui-kit";
+import { MDBCol, MDBContainer, MDBRow, MDBCard, MDBCardImage, MDBBtn } from "mdb-react-ui-kit";
 import { apiKey } from "../service/api";
 
 
@@ -50,9 +50,20 @@ const Filmes = () => {
                     {filmes.map((filme, index) => (
                         <MDBCol md={2} key={filme.id}>
                             <Link to={`/filme/${filme.id}`}>
-                                <MDBCardImage src={`https://image.tmdb.org/t/p/w500/${filme.poster_path}`} fluid alt={filme.title} />
+                                <MDBCard className="cardFilme">
+                                    <MDBCardImage src={`https://image.tmdb.org/t/p/w500/${filme.poster_path}`} fluid alt={filme.title} />
+
+                                    <div className="filmeInfo">
+                                        <p className="filmTitle">{filme.title}</p>
+                                        <p className='dateRelease'>{filme.release_date ? new Date(filme.release_date).toLocaleDateString('pt-BR', {
+                                            day: 'numeric',
+                                            month: 'short',
+                                            year: 'numeric',
+                                        }) : 'Informação não disponível'}</p>
+                                        <p className="filmeDesc">{filme.overview}</p>
+                                    </div>
+                                </MDBCard>
                             </Link>
-                            <p>{filme.title}</p>
                         </MDBCol>
                     ))}
                 </MDBRow>

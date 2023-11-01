@@ -1,0 +1,31 @@
+.scroll-to-top {
+    position: fixed;
+    bottom: 6vh;
+    right: 2vw;
+    width: 5vw;
+    height: 5vw;
+    color: #113b8f;
+    border: none;
+    font-size: 2.5vw;
+    cursor: pointer;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    background-color: transparent;
+    z-index: 1;
+  
+    &:hover {
+      transition: 0.3s ease 0s, left 0.3s ease 0s;
+    }
+  
+    &.show {
+      opacity: 1;
+    }
+  
+    @media (max-width: 991px){
+      width: 12vw;
+      height: 12vw;
+      font-size: 11vw;
+    }
+  
+  
+  }
