@@ -52,7 +52,7 @@ const Filmes = () => {
                         <MDBBtn className="btnSearch">Pesquisar</MDBBtn>
                     </MDBCol>
 
-                    <MDBCol className="colFilmes" md={8}>
+                    <MDBCol className="colFilmes" md={9}>
                         <MDBRow>
                             {filmes.map((filme, index) => (
                                 <MDBCol key={filme.id} md={3}>
@@ -67,7 +67,7 @@ const Filmes = () => {
                                                     month: 'short',
                                                     year: 'numeric',
                                                 }) : 'Informação não disponível'}</p>
-                                                <p className="filmeDesc">{filme.overview}</p>
+                                               
                                             </div>
                                         </MDBCard>
                                     </Link>

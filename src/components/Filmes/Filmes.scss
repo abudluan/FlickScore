@@ -11,10 +11,12 @@
 
     .colPesquisa {
         margin-bottom: 2em;
+
         .btnSearch {
             width: 100%;
             background-color: #113b8f;
-            &:hover{
+
+            &:hover {
                 background-color: #0d2b68;
             }
         }
@@ -23,12 +25,13 @@
     .colFilmes {
         .cardFilme {
             margin-bottom: 1.5em;
-            height: 25em;
+            height: 30em;
             background-color: #ffffff;
 
             @media (max-width: 1400px) {
                 height: auto;
                 margin-bottom: 1em;
+                flex-direction: row;
             }
 
             img {
@@ -54,24 +57,6 @@
                 margin-top: -0.5em;
                 color: gray;
                 margin-left: 0.5em;
-            }
-
-            .filmeDesc {
-                display: none;
-                margin-top: -0.5em;
-                margin-left: 0.5em;
-                margin-right: 1em;
-                color: black;
-
-                @media (max-width:1400px) {
-                    display: block;
-                    overflow: hidden;
-                    height: 4.5em;
-                }
-            }
-
-            @media (max-width: 1400px) {
-                flex-direction: row;
             }
         }
 
