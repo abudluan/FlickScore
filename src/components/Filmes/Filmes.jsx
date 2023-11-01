@@ -47,36 +47,44 @@ const Filmes = () => {
             <MDBContainer>
                 <h2>Filmes</h2>
                 <MDBRow>
-                    {filmes.map((filme, index) => (
-                        <MDBCol md={2} key={filme.id}>
-                            <Link to={`/filme/${filme.id}`}>
-                                <MDBCard className="cardFilme">
-                                    <MDBCardImage src={`https://image.tmdb.org/t/p/w500/${filme.poster_path}`} fluid alt={filme.title} />
+                    <MDBCol className="colPesquisa" md={3}>
+                        <p>pesquisa</p>
+                        <MDBBtn className="btnSearch">Pesquisar</MDBBtn>
+                    </MDBCol>
 
-                                    <div className="filmeInfo">
-                                        <p className="filmTitle">{filme.title}</p>
-                                        <p className='dateRelease'>{filme.release_date ? new Date(filme.release_date).toLocaleDateString('pt-BR', {
-                                            day: 'numeric',
-                                            month: 'short',
-                                            year: 'numeric',
-                                        }) : 'Informação não disponível'}</p>
-                                        <p className="filmeDesc">{filme.overview}</p>
-                                    </div>
-                                </MDBCard>
-                            </Link>
-                        </MDBCol>
-                    ))}
+                    <MDBCol className="colFilmes" md={8}>
+                        <MDBRow>
+                            {filmes.map((filme, index) => (
+                                <MDBCol key={filme.id} md={3}>
+                                    <Link to={`/filme/${filme.id}`}>
+                                        <MDBCard className="cardFilme">
+                                            <MDBCardImage src={`https://image.tmdb.org/t/p/w500/${filme.poster_path}`} fluid alt={filme.title} />
+
+                                            <div className="filmeInfo">
+                                                <p className="filmTitle">{filme.title}</p>
+                                                <p className='dateRelease'>{filme.release_date ? new Date(filme.release_date).toLocaleDateString('pt-BR', {
+                                                    day: 'numeric',
+                                                    month: 'short',
+                                                    year: 'numeric',
+                                                }) : 'Informação não disponível'}</p>
+                                                <p className="filmeDesc">{filme.overview}</p>
+                                            </div>
+                                        </MDBCard>
+                                    </Link>
+                                </MDBCol>
+                            ))}
+                        </MDBRow>
+                        {loading && <p>Carregando...</p>}
+                        {!loading && currentPage < totalPages && (
+                            <MDBBtn onClick={loadMoreFilmes}>
+                                Carregar Mais
+                            </MDBBtn>
+                        )}
+                    </MDBCol>
                 </MDBRow>
-
-                {loading && <p>Carregando...</p>}
-                {!loading && currentPage < totalPages && (
-                    <MDBBtn onClick={loadMoreFilmes}>
-                        Carregar Mais
-                    </MDBBtn>
-                )}
             </MDBContainer>
+        </section>
 
-        </section >
     );
 }
 

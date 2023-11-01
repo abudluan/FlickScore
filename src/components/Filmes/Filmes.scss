@@ -9,65 +9,81 @@
         padding: 0.5em;
     }
 
-    .cardFilme {
-        margin-bottom: 1.5em;
-        height: 25em;
-        background-color: #ffffff;
-
-        @media (max-width: 1400px) {
-            height: auto;
-            margin-bottom: 1em;
+    .colPesquisa {
+        margin-bottom: 2em;
+        .btnSearch {
+            width: 100%;
+            background-color: #113b8f;
+            &:hover{
+                background-color: #0d2b68;
+            }
         }
+    }
 
-        img {
-            border-radius: 5px;
-            border-bottom-right-radius: 0;
-            border-bottom-left-radius: 0;
+    .colFilmes {
+        .cardFilme {
+            margin-bottom: 1.5em;
+            height: 25em;
+            background-color: #ffffff;
 
             @media (max-width: 1400px) {
+                height: auto;
+                margin-bottom: 1em;
+            }
+
+            img {
                 border-radius: 5px;
-                height: 12em;
-                width: 8em;
+                border-bottom-right-radius: 0;
+                border-bottom-left-radius: 0;
+
+                @media (max-width: 1400px) {
+                    border-radius: 5px;
+                    height: 12em;
+                    width: 8em;
+                }
+            }
+
+            .filmTitle {
+                color: black;
+                font-weight: bold;
+                margin-left: 0.5em;
+                margin-top: 0.5em;
+            }
+
+            .dateRelease {
+                margin-top: -0.5em;
+                color: gray;
+                margin-left: 0.5em;
+            }
+
+            .filmeDesc {
+                display: none;
+                margin-top: -0.5em;
+                margin-left: 0.5em;
+                margin-right: 1em;
+                color: black;
+
+                @media (max-width:1400px) {
+                    display: block;
+                    overflow: hidden;
+                    height: 4.5em;
+                }
+            }
+
+            @media (max-width: 1400px) {
+                flex-direction: row;
             }
         }
 
-        .filmTitle {
-            color: black;
-            font-weight: bold;
-            margin-left: 0.5em;
-            margin-top: 0.5em;
-        }
 
-        .dateRelease {
-            margin-top: -0.5em;
-            color: gray;
-            margin-left: 0.5em;
-        }
 
-        .filmeDesc {
-            display: none;
-            margin-top: -0.5em;
-            margin-left: 0.5em;
-            margin-right: 1em;
-            color: black;
-            @media (max-width:1400px) {
-                display: block;
-                overflow: hidden;
-                height: 4.5em;
-            }
-        }
-
-        @media (max-width: 1400px) {
-            flex-direction: row;
+        Button {
+            width: 100%;
+            padding: 1.2em;
+            margin-bottom: 4em;
+            background-color: #113b8f;
         }
     }
 
 
-
-    Button {
-        width: 100%;
-        padding: 1.2em;
-        margin-bottom: 4em;
-        background-color: #113b8f;
-    }
 }

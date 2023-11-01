@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import '../uti/BtnScrollToTop.scss';
-import {RiArrowUpCircleFill} from 'react-icons/ri';
+import {TbSquareArrowUpFilled} from 'react-icons/tb';
 const BtnScrollToTop = () => {
   const [isVisible, setIsVisible] = useState(false);
 
@@ -28,7 +28,7 @@ const BtnScrollToTop = () => {
       className={`scroll-to-top ${isVisible ? 'show' : ''}`}
       onClick={scrollToTop}
     >
-      <RiArrowUpCircleFill />
+      <TbSquareArrowUpFilled />
     </button>
   );
 }
