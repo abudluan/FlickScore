@@ -48,8 +48,12 @@ const Filmes = () => {
                 <h2>Filmes</h2>
                 <MDBRow>
                     <MDBCol className="colPesquisa" md={3}>
-                        <p>pesquisa</p>
-                        <MDBBtn className="btnSearch">Pesquisar</MDBBtn>
+                        <div className="mb-2">
+                            <form className='input-group'>
+                                <input className='form-control' placeholder='Buscar um Filme, Série ou Pessoa' aria-label='Search' />
+                            </form>
+                        </div>
+                        <MDBBtn className="btnSearch">Buscar</MDBBtn>
                     </MDBCol>
 
                     <MDBCol className="colFilmes" md={9}>
@@ -67,7 +71,7 @@ const Filmes = () => {
                                                     month: 'short',
                                                     year: 'numeric',
                                                 }) : 'Informação não disponível'}</p>
-                                               
+
                                             </div>
                                         </MDBCard>
                                     </Link>
